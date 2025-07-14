@@ -1,0 +1,26 @@
+{
+  "name": "mateomonsalve637",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "server": "json-server --watch ./assets/db.json",
+    "frontend": "live-server ./ --watch='app' --port=5500",
+    "dev": "npm run server & npm run frontend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatiusDev/javascript_test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatiusDev/javascript_test/issues"
+  },
+  "homepage": "https://github.com/MatiusDev/javascript_test#readme",
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.3",
+    "live-server": "^1.2.2"
+  }
+}

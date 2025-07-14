@@ -1,0 +1,23 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "username": "admin",
+            "email": "admin@admin.com",
+            "fullname": "Administrador",
+            "url": "https://i.pravatar.cc/300?u=1",
+            "password": "admin12345",
+            "isAdmin": true
+        },
+        {
+            "id": "2",
+            "username": "matiusdev",
+            "email": "matiusdev@gmail.com",
+            "fullname": "Mateo Monsalve",
+            "url": "https://i.pravatar.cc/300?u=2",
+            "password": "123456",
+            "isAdmin": false
+        }
+    ],
+    "events": []
+}
