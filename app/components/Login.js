@@ -1,6 +1,7 @@
 import { getUserByUsername } from '../api/usersAPI.js'
 
 const Login = () => {
+    window.location.href = '#/login';
     function validateUser(username, password) {
         if (!username || username === "") {
             console.log("Debes ingresar un usuario válido");
@@ -44,7 +45,8 @@ const Login = () => {
             fullname: user.fullname,
             url: user.url,
             email: user.email,
-            isAdmin: user.isAdmin
+            isAdmin: user.isAdmin,
+            events: user.events || []
         }));
         window.location.reload();
     }

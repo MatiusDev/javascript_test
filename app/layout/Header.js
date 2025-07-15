@@ -1,4 +1,5 @@
-const Header = ({fullname, url}) => {
+const Header = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
     return `
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
@@ -18,14 +19,14 @@ const Header = ({fullname, url}) => {
 
                 <div class="navbar-end">
                     <div class="navbar-item">
-                        <img style="border-radius: 50%;" src="${url}" alt="Profile-photo" />
+                        <img style="border-radius: 50%;" src="${user.url}" alt="Profile-photo" />
                     </div>
                     <div class="navbar-item">
-                        <p>${fullname}</p>
+                        <p>${user.fullname}</p>
                     </div>
                     <div class="navbar-item">
                         <div class="buttons">
-                            <button id="btnLogout" class="button is-danger" data-link>Cerrar sesión</button>
+                            <button id="btnLogout" class="button is-danger">Cerrar sesión</button>
                         </div>
                     </div>
                 </div>

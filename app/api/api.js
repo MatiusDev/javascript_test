@@ -37,6 +37,16 @@ const updateData = async (ENDPOINT, id, data) => {
     .then(response => response.json());
 };
 
+// Actualiza parcialmente datos en el servidor
+const patchData = async (ENDPOINT, id, data) => {
+  return fetch(`${BASEURL}/${ENDPOINT}/${id}`, {
+    ...HEADERS,
+    method: 'PATCH',
+    body: JSON.stringify(data)
+  }).then(checkResponse)
+    .then(response => response.json());
+};
+
 // Elimina datos del servidor
 const deleteData = async (ENDPOINT, id) => {
   return fetch(`${BASEURL}/${ENDPOINT}/${id}`, {
@@ -49,5 +59,6 @@ export {
   getData,
   createData,
   updateData,
+  patchData,
   deleteData
 }

@@ -7,8 +7,7 @@ import Register from "./components/Register.js";
 const App = (() => {
     const user = JSON.parse(localStorage.getItem("user"));
     
-
-    function render(view) {
+    async function render(view) {
         if (view === Login || view === Register) {
             return `
                 <main class="container" id="main-content">
@@ -26,9 +25,9 @@ const App = (() => {
         }
 
         return `
-            ${Header(user)}
+            ${Header()}
             <main class="container" id="main-content">
-                ${view()}
+                ${await view()}
             </main>
             ${Footer()}
         `;

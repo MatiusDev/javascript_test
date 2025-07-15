@@ -1,4 +1,8 @@
+import { getUserByUsername, newUser } from "../api/usersAPI.js";
+
 const Register = () => {
+    window.location.href = '#/register';
+
     function validateUser(username, password, fullname, email) {
         if (!username || username === "") {
             console.log("Debes ingresar un usuario válido.");
@@ -38,29 +42,40 @@ const Register = () => {
 
         const userElement = document.getElementById("username");
         const passwordElement = document.getElementById("password");
+        const fullnameElement = document.getElementById("fullname");
+        const emailElement = document.getElementById("email");
 
         const username = userElement.value;
         const password = passwordElement.value;
+        const fullname = fullnameElement.value;
+        const email = emailElement.value;
 
-        if (!validateUser(username, password)) return;
+        if (!validateUser(username, password, fullname, email)) return;
 
-        const user = await getUserByUsername(username);      
+        const userExist = await getUserByUsername(username);      
 
-        if (!user) {
-            console.log("El usuario no existe");
+        if (userExist) {
+            console.log("Ya existe un usuario con este nombre de usuario.");
             return;
         }
 
-        if (user.password !== password) {
-            console.log("Usuario o contraseña incorrectos.");
-            return;
-        }
-
-        localStorage.setItem("user", JSON.stringify({
-            id: user.id,
+        const user = {
             username,
-            fullname: user.fullname,
-            isAdmin: user.isAdmin
+            email,
+            fullname,
+            url: `https://i.pravatar.cc/300?u=${Math.floor(Math.random() * 100)}`,
+            password,
+            isAdmin: false
+        }
+
+        const dbUser = await newUser(user);
+        localStorage.setItem("user", JSON.stringify({
+            id: dbUser.id,
+            username: dbUser.username,
+            fullname: dbUser.fullname,
+            url: dbUser.url,
+            email: dbUser.email,
+            isAdmin: dbUser.isAdmin
         }));
         window.location.reload();
     }
@@ -75,22 +90,22 @@ const Register = () => {
             <div class="hero-body">
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="Usuario">
+                        <input id="username" class="input" type="text" placeholder="Usuario">
                     </p>
                 </div>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="Nombre completo">
+                        <input id="fullname" class="input" type="text" placeholder="Nombre completo">
                     </p>
                 </div>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input" type="email" placeholder="Correo Electrónico">
+                        <input id="email" class="input" type="email" placeholder="Correo Electrónico">
                     </p>
                 </div>
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="Contraseña">
+                        <input id="password" class="input" type="password" placeholder="Contraseña">
                     </p>
                 </div>
                 <div class="field">

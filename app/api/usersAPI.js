@@ -1,4 +1,4 @@
-import { getData, createData, updateData, deleteData } from "./api.js";
+import { getData, createData, updateData, patchData, deleteData } from "./api.js";
 
 const ENDPOINT = "users";
 
@@ -15,6 +15,10 @@ const newUser = async (data) => {
     return await createData(ENDPOINT, data);
 };
 
+const patchUser = async (id, data) => {
+    return await patchData(ENDPOINT, id, data);
+};
+
 const updateUser = async (id, data) => {
     return await updateData(ENDPOINT, id, data);
 };
@@ -28,5 +32,6 @@ export {
     getUserByUsername,
     newUser,
     updateUser,
+    patchUser,
     deleteUser
 }
