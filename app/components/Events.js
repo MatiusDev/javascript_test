@@ -1,11 +1,27 @@
 import { getEvents } from "../api/eventsAPI.js";
+import { newModal } from "../bulma.js";
+
+const btnTriggerName = "create-trigger";
+
+function newEvent() {
+    const template = `
+    <h1>Prueba</h1>
+    `;
+    newModal(btnTriggerName, template)
+}
 
 const Events = async () => {
     window.location.href = '#/dashboard/events';
     const events = await getEvents();
     const user = JSON.parse(localStorage.getItem("user"));
     return `
-        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;" class="card">
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; padding: 30px 0px;" class="card">
+            ${user.isAdmin
+                ? `<div style="width: 100%; display: flex; justify-content: right;">
+                        <button data-button-new class="button mr-6 mb-2 js-modal-trigger" data-target="${btnTriggerName}">Nuevo evento</button>
+                    </div>`
+                : ``
+            }
             ${events.map(event => {
                 return `
                     <div style="max-width: 350px; min-width: 350px;" class="card-content">

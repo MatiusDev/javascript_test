@@ -14,7 +14,11 @@ const Header = () => {
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <a href="#/dashboard/events" class="navbar-item" data-link>Eventos</a>
-                    <a href="#/dashboard/enrollments" class="navbar-item" data-link>Mis Eventos</a>
+                    ${!user.isAdmin
+                        ? `<a href="#/dashboard/enrollments" class="navbar-item" data-link>Mis Eventos</a>`
+                        : ``
+                    }
+                    
                 </div>
 
                 <div class="navbar-end">

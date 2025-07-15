@@ -75,7 +75,8 @@ const Register = () => {
             fullname: dbUser.fullname,
             url: dbUser.url,
             email: dbUser.email,
-            isAdmin: dbUser.isAdmin
+            isAdmin: dbUser.isAdmin,
+            events: []
         }));
         window.location.reload();
     }

@@ -2,7 +2,7 @@ import App from "./app/app.js";
 
 import { routeHandler } from "./app/components/Router.js";
 
-import { getEventById, patchEvent } from "./app/api/eventsAPI.js";
+import { getEventById, patchEvent, deleteEvent } from "./app/api/eventsAPI.js";
 import { patchUser } from "./app/api/usersAPI.js";
 
 function initUser() {
@@ -32,9 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         if (evt.target.matches('[data-button-suscribe]')) {
-            if (!user) {
-                return;
-            }
+            if (!user) return;
 
             if (!user.events) {
                 user.events = []
@@ -74,6 +72,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 isAdmin: userDB.isAdmin,
                 events: userDB.events
             }));
+            window.location.reload();
+        }
+
+        if (evt.target.matches('[data-button-edit]')) {
+            
+        }
+
+        if (evt.target.matches('[data-button-delete]')) {
+            if (!user) return;
+    
+            const eventId = evt.target.getAttribute('data-event-id');
+            const response = await deleteEvent(eventId);
             window.location.reload();
         }
 
