@@ -35,7 +35,7 @@
       "name": "Prueba",
       "description": "prueba",
       "capacity": 20,
-      "date": "2022-10-10"
+      "date": "2022-10-11"
     },
     {
       "id": "2",
@@ -46,10 +46,10 @@
     },
     {
       "id": "3",
-      "name": "Prueba",
-      "description": "prueba",
+      "name": "Otro",
+      "description": "otro listo",
       "capacity": 20,
-      "date": "2022-10-10"
+      "date": "2025-12-17"
     },
     {
       "id": "4",
@@ -57,6 +57,13 @@
       "description": "prueba",
       "capacity": 20,
       "date": "2022-10-10"
+    },
+    {
+      "id": "5ee6",
+      "name": "Robinson",
+      "description": "prueba",
+      "date": "2025-07-16",
+      "capacity": 23
     }
   ]
 }

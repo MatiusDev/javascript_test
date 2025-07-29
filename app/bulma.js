@@ -1,17 +1,16 @@
 export function newModal(elementID, content) {
-    const template = `
-    <div id="${elementID}" class="modal">
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = `
+    <div id="${elementID}" class="modal is-active">
         <div class="modal-background"></div>
-
         <div class="modal-content">
             <div class="box">
                 ${content}
             </div>
         </div>
-
         <button class="modal-close is-large" aria-label="close"></button>
     </div>`;
-    document.body.prepend(template);
+    document.body.appendChild(wrapper.firstElementChild);
 }
 
 
